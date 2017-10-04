@@ -1,0 +1,11 @@
+#Bubble Diameter:0.025655904430408976 m 
+#Pressure:1.372e+05 Pa 
+#Bubble Volume:1.0492431477681203e-05 m3 
+cs:1.6e+17
+rb:1.6e+17
+ru:3.3e-03
+sr:7.0e+14
+kr:4.6e+19
+xe:3.6e+19
+u:2.9e+01
+pu:4.3e+06
