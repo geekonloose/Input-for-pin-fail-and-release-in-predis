@@ -45,7 +45,7 @@ DF = np.zeros([len(aerosol_size), number])
 
 
 
-#%% Constants
+# %% Constants
 
 Tb = 1154.1  # Boiling point of sodium in kelvine
 Ts = 800 + 273  # sodium pool temperature
@@ -69,7 +69,7 @@ volume_of_big_bubble = 0
 
 
 
-#%% Initial Values
+# %% Initial Values
 
 T[:] = 800 + 273  # check
 T_plenum = 1000 + 273
@@ -85,7 +85,7 @@ Vb[0] = math.pi * 0.1667 * Db[0] ** 3  # bubble volume
 
 
 
-#%% Print Statements:
+# %% Print Statements:
 
 print('pressure is:', Pb[0], 'Pa')
 print('sodium density: {:0.3e}'.format(rhol[0]), 'kg/m3')
@@ -134,7 +134,7 @@ rho_aero = list(map(float, rho_aero))
 partial_pressure = np.zeros(len(Name))
 
 for i in range(len(Name)):
-    
+
     if Name[i] != 'i':
         partial_pressure[i] =1e5* (10 ** ((A[i]) + B[i] / T_plenum + C[i] * math.log10(T_plenum) + D[i] * T_plenum * 1e-3))
     else:
@@ -177,16 +177,16 @@ condition_volatile = []
 condition_num_partial = []
 
 for i in range(len(partial_pressure)):
-    
+
     if partial_pressure[i] > plenum_pressure:
         condition_volatile.append(i)
-        
+
         number_density_of_isotope[i] = number_density_in_core[i]
-        
+
     else:
-        
+
         condition_num_partial.append(i)
-        
+
         number_density_of_isotope[i] = partial_pressure[i] * volume_of_plenum/(kb * T_plenum)
 
 constant = sum(number_density_of_isotope)*kb*T_plenum
@@ -212,25 +212,25 @@ Db[0] = (sum(number_density_of_isotope) * kb * T[0] / (Pb[0] * math.pi * 0.1667)
 #%% Partial Pressure in the sodium i.e at sodium sub-cooled temperature
 
 for i in range(len(Name)):
-    
+
     if Name[i] != 'i':
-    
+
         partial_pressure[i] =1e5* (10 ** ((A[i]) + B[i] / T[0] + C[i] * math.log10(T[0]) + D[i] * T_plenum * 1e-3))
-        
+
     else:
-        
+
         partial_pressure[i] = 1e5*(10**(A[i]-B[i]/(T[0] + C[i])))
 
 
 
 for i in range(len(partial_pressure)):
-    
+
     if i not in condition_volatile:
-        
+
         number_density_of_isotope_after_cooling[i] = partial_pressure[i] * volume_of_plenum/(kb * T_plenum * no_of_bubble)
-    
+
     else:
-        
+
         number_density_of_isotope_after_cooling[i] = number_density_of_isotope[i]
 
 number_density_of_isotope_after_cooling = np.array(number_density_of_isotope_after_cooling)
@@ -311,7 +311,7 @@ for dp in aerosol_size:
     j = 0
     print('aerosol size is:',dp,'m')
     file.write('Size of aerosol is: {} \n'.format(dp))
-    
+
     for k in condition_num_partial:
 
 

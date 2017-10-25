@@ -1,3 +1,8 @@
+['kr', 'rb', 'sr', 'zr', 'ru', 'te',
+ 'i', 'xe', 'cs', 'ba', 'la', 'ce',
+ 'u', 'pu']
+
+
 Size of aerosol is: 1e-08 
 rb	0.3846782563135312 
 sr	0.38467608221212696 
